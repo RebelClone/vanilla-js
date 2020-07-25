@@ -10,7 +10,8 @@ inputQuantity = document.querySelector('#quantity'),
 inputRate = document.querySelector('#rate'),
 btnCalculate = document.querySelector('#calculate'),
 inputBeforeAmount = document.querySelector('#before-amount'),
-divCalculation = document.querySelector('.calculation')
+divCalculation = document.querySelector('.calculation'),
+mobileResponsive = document.querySelector('.mb-res')
 
 
 
@@ -76,6 +77,8 @@ function calculate() {
 }
 
 function calculationField(){
+
+    const className = window.innerWidth < 600 ? 'col' : 'col-6'
     divCalculation.innerHTML = `
 <div class="row">
     <div class="col">
@@ -110,7 +113,7 @@ function calculationField(){
 </div>
 <br>
 <div class="row">
-    <div class="col-6">
+    <div class="${className}">
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">TDS</span>
@@ -135,6 +138,11 @@ function calculationField(){
 
 // DOM Loaded
 document.addEventListener('DOMContentLoaded',()=> {
+
+    const className = window.innerWidth < 600 ? 'col mb-res' : 'col-6 mb-res'
+
+    mobileResponsive.className = className
+
     inputBeforeAmount.value = 0
     inputDate.value = todayDate()
 })
